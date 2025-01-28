@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    platform: linux/amd64
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  sqlserver:
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    container_name: azure-sql-edge
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${SQL_PASSWORD}
+    volumes:
+      - sql_data:/var/opt/mssql
+      - ./init.sql:/init.sql  # Mount init.sql file into the container
+    command: /bin/bash -c "echo 'Waiting for SQL Server to start...'; sleep 30; /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P StrongPassword123 -i /init.sql; /opt/mssql/bin/sqlservr"
+
+volumes:
+  sql_data:

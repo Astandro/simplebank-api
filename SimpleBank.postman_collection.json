@@ -1,0 +1,548 @@
+{
+	"info": {
+		"_postman_id": "a65a7793-cbf0-44b8-8195-2ee3b065fdfc",
+		"name": "SimpleBank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3006135"
+	},
+	"item": [
+		{
+			"name": "bank",
+			"item": [
+				{
+					"name": "Get Bank History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/bank/histories?account_id=000109999999&start_date=2025-01-01&end_date=2025-01-31",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bank",
+								"histories"
+							],
+							"query": [
+								{
+									"key": "account_id",
+									"value": "000109999999",
+									"description": "(Required) "
+								},
+								{
+									"key": "start_date",
+									"value": "2025-01-01",
+									"description": "(Required) "
+								},
+								{
+									"key": "end_date",
+									"value": "2025-01-31",
+									"description": "(Required) "
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/bank/histories?account_id=000109999999&start_date=2025-01-01&end_date=2025-01-31",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bank",
+										"histories"
+									],
+									"query": [
+										{
+											"key": "account_id",
+											"value": "000109999999",
+											"description": "(Required) "
+										},
+										{
+											"key": "start_date",
+											"value": "2025-01-01",
+											"description": "(Required) "
+										},
+										{
+											"key": "end_date",
+											"value": "2025-01-31",
+											"description": "(Required) "
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 28 Jan 2025 09:45:47 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "502"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"transaction_id\": \"20201231-00000.00002\",\n        \"account_id\": \"000109999999\",\n        \"currency\": \"IDR\",\n        \"transaction_date\": \"2025-01-28T03:12:22.327000\",\n        \"amount\": 1250,\n        \"note\": \"SETOR\"\n    },\n    {\n        \"transaction_id\": \"20201231-00000.00003\",\n        \"account_id\": \"000109999999\",\n        \"currency\": \"SGD\",\n        \"transaction_date\": \"2025-01-28T03:12:22.330000\",\n        \"amount\": 128,\n        \"note\": \"SETOR\"\n    },\n    {\n        \"transaction_id\": \"20201231-00000.00004\",\n        \"account_id\": \"000109999999\",\n        \"currency\": \"SGD\",\n        \"transaction_date\": \"2025-01-28T03:12:22.330000\",\n        \"amount\": -125.75,\n        \"note\": \"TRANSFER\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Deposit Amount",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"account_id\": \"000109999999\",\n  \"currency_id\": \"IDR\",\n  \"amount\": 1000000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bank/deposits",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bank",
+								"deposits"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"account_id\": \"000109999999\",\n  \"currency_id\": \"IDR\",\n  \"amount\": 1000000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bank/deposits",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bank",
+										"deposits"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 28 Jan 2025 09:47:29 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "137"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transaction_id\": \"20250128-00000.00038\",\n    \"account_id\": \"000109999999\",\n    \"currency_id\": \"IDR\",\n    \"amount\": 1000000,\n    \"message\": \"Deposit successful\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Withdraw Balance",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"account_id\": \"000109999999\",\n  \"currency_id\": \"IDR\",\n  \"amount\": 10000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bank/withdrawals",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bank",
+								"withdrawals"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"account_id\": \"000109999999\",\n  \"currency_id\": \"IDR\",\n  \"amount\": 10000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bank/withdrawals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bank",
+										"withdrawals"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 28 Jan 2025 09:49:46 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "136"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transaction_id\": \"20250128-00000.00039\",\n    \"account_id\": \"000109999999\",\n    \"currency_id\": \"IDR\",\n    \"amount\": 10000,\n    \"message\": \"Withdraw successful\"\n}"
+						},
+						{
+							"name": "Not Enough Balance",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"account_id\": \"000109999999\",\n  \"currency_id\": \"IDR\",\n  \"amount\": 1000000\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bank/withdrawals",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bank",
+										"withdrawals"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 28 Jan 2025 09:50:33 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "31"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Not enough balance\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Transfer Amount",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"from_account_id\": \"000108757484\",\n  \"currency_id\": \"IDR\",\n  \"to_accounts\": [\n    {\n      \"account_id\": \"000108888881\",\n      \"amount\": 100000\n    },\n    {\n      \"account_id\": \"000108888882\",\n      \"amount\": 100000\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/bank/transfers",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"bank",
+								"transfers"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Successfull Response",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"from_account_id\": \"000108757484\",\n  \"currency_id\": \"IDR\",\n  \"to_accounts\": [\n    {\n      \"account_id\": \"000108888881\",\n      \"amount\": 100000\n    },\n    {\n      \"account_id\": \"000108888882\",\n      \"amount\": 100000\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bank/transfers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bank",
+										"transfers"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 28 Jan 2025 09:52:03 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "234"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"transaction_id\": \"20250128-00000.00041\",\n    \"from_account_id\": \"000108757484\",\n    \"to_accounts\": [\n        {\n            \"account_id\": \"000108888881\",\n            \"amount\": 100000\n        },\n        {\n            \"account_id\": \"000108888882\",\n            \"amount\": 100000\n        }\n    ],\n    \"currency_id\": \"IDR\",\n    \"message\": \"Transfer successful\"\n}"
+						},
+						{
+							"name": "Not Enough Balance",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"from_account_id\": \"000108757484\",\n  \"currency_id\": \"IDR\",\n  \"to_accounts\": [\n    {\n      \"account_id\": \"000108888881\",\n      \"amount\": 100000000\n    },\n    {\n      \"account_id\": \"000108888882\",\n      \"amount\": 100000000\n    }\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/bank/transfers",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"bank",
+										"transfers"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Tue, 28 Jan 2025 09:52:28 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "31"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Not enough balance\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
