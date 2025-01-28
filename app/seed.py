@@ -4,24 +4,10 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
-# Get database connection details from environment variables
-SQL_SERVER = os.getenv('SQL_SERVER')
-SQL_DATABASE = os.getenv('SQL_DATABASE')
-SQL_USER = os.getenv('SQL_USER')
-SQL_PASSWORD = os.getenv('SQL_PASSWORD')
-SQL_DRIVER = os.getenv('SQL_DRIVER')
-
-# Establish the connection using pyodbc
-connection = pyodbc.connect(
-    f'DRIVER={{ODBC Driver 17 for SQL Server}};'
-    f'SERVER={SQL_SERVER};'
-    f'DATABASE={SQL_DATABASE};'
-    f'UID={SQL_USER};'
-    f'PWD={SQL_PASSWORD}'
-)
-
-cursor = connection.cursor()
+conn = pyodbc.connect(DATABASE_URL, autocommit=False)
+cursor = conn.cursor()
 
 # Create BOS_Counter table
 cursor.execute('''
@@ -88,8 +74,8 @@ cursor.execute("INSERT INTO BOS_History VALUES ('20201231-00000.00003', '0001099
 cursor.execute("INSERT INTO BOS_History VALUES ('20201231-00000.00004', '000109999999', 'SGD', GETDATE(), -125.75, 'TRANSFER')")
 cursor.execute("INSERT INTO BOS_History VALUES ('20201231-00000.00004', '000108888888', 'SGD', GETDATE(), 125.75, 'TRANSFER')")
 
-connection.commit()
+conn.commit()
 print("Database seeded successfully!")
 
 cursor.close()
-connection.close()
+conn.close()
