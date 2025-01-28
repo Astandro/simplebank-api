@@ -144,7 +144,7 @@ If you encounter any issues, here are some common solutions:
    - Ensure that your `main.py` file is located in the correct directory and that the `CMD` in the `Dockerfile` points to the correct path (`app.main:app`).
 
 3. **SQL Server Docker Container Fails to Start**:
-   - For Mac M1 users, consider using Azure SQL Edge as a lightweight alternative to SQL Server.
+   - For Mac M1 users, consider using Azure SQL Edge as a lightweight alternative to SQL Server, since Azure SQL Edge is built on the same engine as SQL Server and Azure SQL
 
 ## License
 
