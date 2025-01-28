@@ -40,7 +40,7 @@ This is a simple API service built with FastAPI, Python, and Docker that interac
 Clone the project repository to your local machine:
 
 ```bash
-git clone https://github.com/astandro/simplebank-api.git
+git clone https://github.com/Astandro/simplebank-api.git
 cd simplebank-api
 ```
 
@@ -70,9 +70,10 @@ Once the containers are running, you can access the FastAPI application at `http
 
 You can test the following endpoints:
 
-- `GET /deliveries/` — Get all deliveries.
-- `GET /deliveries/{id}` — Get a delivery by ID.
-- `POST /deliveries/` — Create a new delivery.
+- `GET /bank/histories` — Get all bank activity hsitory of an account id.
+- `PUT /bank/deposits` — Deposit (SETOR) some amount of money from an account id in a specific currency.
+- `PUT /bank/withdrawals` — Withdraw (TARIK) some amount of money from an account id in a specific currency.
+- `PUT /bank/transfers` — Transfer some money from an account id to other account id(s) - Support multiple transfer in a single transaction.
 
 ### 5. SQL Server Initial Configuration
 
